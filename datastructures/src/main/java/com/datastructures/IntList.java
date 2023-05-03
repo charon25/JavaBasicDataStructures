@@ -106,8 +106,13 @@ public class IntList implements Iterable<Integer> {
         return pop(-1);
     }
 
-    public void remove(int index) {
-        pop(index);
+    public void remove(int value) {
+        for (int i = 0; i < pointer; i++) {
+            if (get(i) == value) {
+                pop(i);
+                return;
+            }
+        }
     }
 
     public void extend(IntList list) {
