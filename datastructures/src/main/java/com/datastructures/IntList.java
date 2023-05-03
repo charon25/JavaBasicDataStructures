@@ -30,11 +30,11 @@ public class IntList {
         return 0;
     }
 
-    public void removeAt(int index) {
-
+    public void remove(int index) {
+        
     }
 
-    public void remove(int index) {
+    public void extend(IntList list) {
         
     }
 
