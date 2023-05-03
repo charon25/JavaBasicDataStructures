@@ -1,6 +1,9 @@
 package com.datastructures;
 
-public class IntList {
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class IntList implements Iterable<Integer> {
 
     private final static int STARTING_SIZE = 32;
 
@@ -30,19 +33,27 @@ public class IntList {
         currentSize = size;
     }
 
+    @Override
+    public Iterator<Integer> iterator() {
+        return Arrays.stream(elements, 0, pointer + 1).iterator();
+    }
+
     public void append(int value) {
-        if (pointer < currentSize - 1) {
+        pointer++;
+
+        if (pointer < currentSize) {
             elements[pointer] = value;
-            pointer++;
+
         } else {
             int[] newElements = new int[2 * currentSize];
             for (int i = 0; i < currentSize; i++) {
                 newElements[i] = elements[i];
             }
+
             elements = newElements;
+            elements[pointer] = value;
 
             currentSize *= 2;
-            pointer++;
         }
     }
 
@@ -63,20 +74,47 @@ public class IntList {
         return elements[pointer + index + 1];
     }
 
+    public void set(int index, int value) {
+        if (index > pointer || -index > pointer + 1) {
+            throw new IndexOutOfBoundsException("list index out of range");
+        }
+
+        if (index < 0) {
+            index = pointer + index + 1;
+        }
+
+        elements[index] = value;
+    }
+
+    public int pop(int index) {
+        int value = get(index);
+
+        if (index < 0) {
+            index = pointer + index + 1;
+        }
+
+        for (int i = index; i < pointer; i++) {
+            set(i, get(i + 1));
+        }
+
+        pointer--;
+        
+        return value;
+    }
+
     public int pop() {
         return pop(-1);
     }
 
-    public int pop(int index) {
-        return 0;
-    }
-
     public void remove(int index) {
-
+        pop(index);
     }
 
     public void extend(IntList list) {
-
+        for (int value : list) {
+            append(value);
+        }
+        pointer += list.size();
     }
 
 }
