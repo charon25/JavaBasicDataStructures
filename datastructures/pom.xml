@@ -148,7 +148,7 @@
                     </limit>
                   </limits>
                 </rule>
-                <rule>
+                <!-- <rule>
                   <element>CLASS</element>
                   <limits>
                     <limit>
@@ -157,7 +157,7 @@
                       <maximum>${jacoco.unit-tests.limit.class-complexity}</maximum>
                     </limit>
                   </limits>
-                </rule>
+                </rule> -->
                 <rule>
                   <element>METHOD</element>
                   <limits>

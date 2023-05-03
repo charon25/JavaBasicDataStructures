@@ -36,6 +36,8 @@ public class IntListTest {
 
         list.set(0, 100);
         assertEquals(100, list.get(0), "element 0 is not 100");
+        list.set(-1, 314);
+        assertEquals(314, list.get(-1), "element 0 is not 100");
     }
 
     @Test
@@ -122,6 +124,13 @@ public class IntListTest {
             assertEquals(integer, 5 * index, String.format("element %s is not %s", index, integer));
             index++;
         }
+    }
+
+    @Test
+    public void testConstrucLargeArray() {
+        int[] array = new int[100];
+        IntList list = new IntList(array);
+        assertEquals(100, list.size(), "size is not 100");
     }
 
 }
