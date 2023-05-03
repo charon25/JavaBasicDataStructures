@@ -31,15 +31,36 @@ public class IntList {
     }
 
     public void append(int value) {
+        if (pointer < currentSize - 1) {
+            elements[pointer] = value;
+            pointer++;
+        } else {
+            int[] newElements = new int[2 * currentSize];
+            for (int i = 0; i < currentSize; i++) {
+                newElements[i] = elements[i];
+            }
+            elements = newElements;
 
+            currentSize *= 2;
+            pointer++;
+        }
     }
 
     public int size() {
-        return 0;
+        return pointer + 1;
     }
 
     public int get(int index) {
-        return 0;
+        if (index > pointer || -index > pointer + 1) {
+            throw new IndexOutOfBoundsException("list index out of range");
+        }
+
+        if (index >= 0) {
+            return elements[index];
+        }
+
+        // Negative indices start from the end (-1 is the last element, so returns elements[pointer])
+        return elements[pointer + index + 1];
     }
 
     public int pop() {

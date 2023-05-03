@@ -3,6 +3,7 @@ package com.datastructures;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IntListTest {
 
@@ -61,6 +62,21 @@ public class IntListTest {
         for (int i = 0; i < 100; i++) {
             assertEquals(list.get(i + 3), i, String.format("element %s is not %s", i + 3, i));
         }
+    }
+
+    @Test
+    void testErrors() {
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+            IntList list = new IntList();
+            list.append(2);
+            list.get(1);
+        });
+
+        exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+            IntList list = new IntList();
+            list.append(2);
+            list.get(-2);
+        });
     }
 
 }
