@@ -6,3 +6,4 @@ This repo contains custom made basic data structures. These were made for learni
 
 - IntList (made to look like Python list)
 - IntLinkedList
+- StringHashTable
