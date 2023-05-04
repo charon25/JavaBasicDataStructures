@@ -38,6 +38,8 @@ public class IntListTest {
         assertEquals(100, list.get(0), "element 0 is not 100");
         list.set(-1, 314);
         assertEquals(314, list.get(-1), "element 0 is not 100");
+
+        list.remove(314159);
     }
 
     @Test

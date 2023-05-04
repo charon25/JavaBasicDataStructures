@@ -38,6 +38,8 @@ public class IntLinkedListTest {
 
         assertFalse(list.contains(0), "list still contain 0");
         assertTrue(list.contains(1), "list does not contain 1");
+
+        list.remove(1000);
     }
 
 }
