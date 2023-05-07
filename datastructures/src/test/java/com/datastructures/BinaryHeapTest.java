@@ -3,6 +3,7 @@ package com.datastructures;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 public class BinaryHeapTest {
@@ -11,6 +12,8 @@ public class BinaryHeapTest {
     public void testExtractMin() {
         BinaryHeap heap = new BinaryHeap();
         assertEquals(0, heap.size(), "binary heap is not empty");
+        assertNull(heap.getMin(), "min of empty heap is not null");
+        assertNull(heap.extractMin(), "min of empty heap is not null");
 
         for (int i = 19; i >= 10; i--) {
             heap.insert(Integer.toString(i), i);
@@ -42,6 +45,8 @@ public class BinaryHeapTest {
         heap.decreaseKey("9", -1);
 
         assertEquals("9", heap.extractMin(), "9 was not put at the front after decrease");
+
+        heap.decreaseKey("100", 0);
 
     }
 
