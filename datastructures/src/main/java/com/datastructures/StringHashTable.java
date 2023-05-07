@@ -44,7 +44,7 @@ public class StringHashTable<T> {
 
 
     private int getHash(String key) {
-        if (key == "") {
+        if (key.equals("")) {
             return 0;
         }
 
